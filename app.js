@@ -1,30 +1,18 @@
-const typeorm = require("typeorm");
+const bodyParser = require("body-parser");
+// const typeorm = require("typeorm");
 
 const express = require("express");
 const app = express();
+app.use(bodyParser.json());
 const router = express.Router();
 
-typeorm.createConnection({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "123456",
-    database: "test",
-    entities: [
-        
-    ],
-    synchronize: true,
-    logging: false
-}).then(connection => {
-    // here you can start to work with your entities
-}).catch(error => console.log(error));
+const connection = require("./database/databaseProducts");
 
 app.listen(3000, () => {
- console.log("Server running on port 3000");
+  console.log("Server running on port 3000");
 });
 
-//Rotas
+// routes
 const index = require('./routes/index');
 const productsRoute = require('./routes/productsRoute');
 
