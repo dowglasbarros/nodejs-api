@@ -6,6 +6,8 @@ const connection = require('../database/databaseProducts');
 connection.then(connection => {
   router.get('/', controller.all);
 
+  router.get('/:product_code', controller.one);
+
   router.post('/', controller.save);
 
   router.put('/:id', controller.put);
