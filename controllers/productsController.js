@@ -27,7 +27,6 @@ connection.then(connection => {
   exports.one = (req, res, next) => {
     return productRepository.findOne({product_code: req.params.product_code})
       .then(result => {
-        console.log('req', req.query);
         res.json(result);
       })
       .catch((error) => {
@@ -37,8 +36,17 @@ connection.then(connection => {
   };
 
   exports.save = (req, res, next) => {
-    res.status(201).send('Requisição recebida com sucesso!');
-    return productRepository.save(req.body);
+    let product = new Product();
+    product = req.body;
+
+    return productRepository.save(product)
+      .then(() => {
+        res.status(201).send('Requisição recebida com sucesso!');
+      })
+      .catch((error) => {
+        res.status(201).send(httpMessages.post.error);
+        console.log(error);
+      });
   };
 
   exports.put = (req, res, next) => {
