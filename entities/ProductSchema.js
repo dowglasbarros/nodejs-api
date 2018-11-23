@@ -1,20 +1,20 @@
-const EntitySchema = require("typeorm").EntitySchema;
-const Product = require("../models/Product").Product;
+const EntitySchema = require('typeorm').EntitySchema;
+const Product = require('../models/Product').Product;
 
 module.exports = new EntitySchema({
-  name: "Product",
+  name: 'Product',
   target: Product,
   columns: {
     id: {
       primary: true,
-      type: "uuid",
-      generated: "uuid"
+      type: 'uuid',
+      generated: 'uuid'
     },
     product_code: {
-      type: "integer"
+      type: 'integer'
     },
     description: {
-      type: "varchar"
+      type: 'varchar'
     }
   }
 });

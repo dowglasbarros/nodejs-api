@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/productsController')
-const connection = require("../database/databaseProducts");
+const connection = require('../database/databaseProducts');
 
 connection.then(connection => {
   router.get('/', controller.all);

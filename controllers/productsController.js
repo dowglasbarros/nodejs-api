@@ -1,20 +1,27 @@
-const getRepository = require("typeorm");
-const Product = require("../models/Product").Product;
-const connection = require("../database/databaseProducts");
+const Product = require('../models/Product').Product;
+const connection = require('../database/databaseProducts');
 
-// import {NextFunction, Request, Response} from "express";
-// const productRepository = getRepository(Product);
+const httpMessages = {
+  get: {
+    error: 'Ops! Aconteceu um erro :('
+  },
+  post: {
+    error: 'Ops! Aconteceu um erro :('
+  }
+}
 
 connection.then(connection => {
-  const productRepository = connection.getRepository(Product);  
+  let productRepository = connection.getRepository(Product);  
 
   exports.all = (req, res, next) => {
-    // res.status(201).send('Requisição recebida com sucesso!');
     return productRepository.find()
       .then(result => {
         res.json(result);
       })
-      .catch(error => console.log(error));
+      .catch((error) => {
+        res.status(201).send(httpMessages.get.error);
+        console.log(error);
+      });
   };
 
   exports.save = (req, res, next) => {

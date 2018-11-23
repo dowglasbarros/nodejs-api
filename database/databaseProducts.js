@@ -1,14 +1,14 @@
-const typeorm = require("typeorm");
+const typeorm = require('typeorm');
 
 const connection = typeorm.createConnection({
-  type: "postgres",
-  host: "localhost",
+  type: 'postgres',
+  host: 'localhost',
   port: 5432,
-  username: "postgres",
-  password: "123456",
-  database: "test",
+  username: 'postgres',
+  password: '123456',
+  database: 'test',
   entities: [
-    require("../entities/ProductSchema")
+    require('../entities/ProductSchema')
   ],
   synchronize: true,
   logging: false
