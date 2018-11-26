@@ -6,7 +6,8 @@ const httpMessages = {
     error: 'Ops! Aconteceu um erro :('
   },
   post: {
-    error: 'Ops! Aconteceu um erro :('
+    error: 'Ops! Aconteceu um erro :(',
+    success: 'Requisição recebida com sucesso!'
   }
 }
 
@@ -19,7 +20,7 @@ connection.then(connection => {
         res.json(result);
       })
       .catch((error) => {
-        res.status(201).send(httpMessages.get.error);
+        res.status(500).send(httpMessages.get.error);
         console.log(error);
       });
   };
@@ -30,7 +31,7 @@ connection.then(connection => {
         res.json(result);
       })
       .catch((error) => {
-        res.status(201).send(httpMessages.get.error);
+        res.status(500).send(httpMessages.get.error);
         console.log(error);
       });
   };
@@ -41,22 +42,22 @@ connection.then(connection => {
 
     return productRepository.save(product)
       .then(() => {
-        res.status(201).send('Requisição recebida com sucesso!');
+        res.status(201).send(httpMessage.post.success);
       })
       .catch((error) => {
-        res.status(201).send(httpMessages.post.error);
+        res.status(400).send(httpMessages.post.error);
         console.log(error);
       });
   };
 
-  exports.put = (req, res, next) => {
-    let id = req.params.id;
-    res.status(201).send(`Requisição recebida com sucesso! ${id}`);
-  };
+  // exports.put = (req, res, next) => {
+  //   let id = req.params.id;
+  //   res.status(201).send(`Requisição recebida com sucesso! ${id}`);
+  // };
 
-  exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`Requisição recebida com sucesso! ${id}`);
-  };
+  // exports.delete = (req, res, next) => {
+  //   let id = req.params.id;
+  //   res.status(200).send(`Requisição recebida com sucesso! ${id}`);
+  // };
 
 });
