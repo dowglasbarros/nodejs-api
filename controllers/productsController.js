@@ -1,5 +1,5 @@
 const Product = require('../models/Product').Product;
-const connection = require('../database/databaseProducts');
+const connection = require('../database/productsDatabase');
 
 const httpMessages = {
   get: {
