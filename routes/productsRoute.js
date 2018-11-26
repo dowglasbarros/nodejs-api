@@ -10,9 +10,9 @@ connection.then(connection => {
 
   router.post('/', controller.save);
 
-  router.put('/:id', controller.put);
+  // router.put('/:id', controller.put);
 
-  router.delete('/:id', controller.delete);
+  // router.delete('/:id', controller.delete);
 });
 
 module.exports = router;
