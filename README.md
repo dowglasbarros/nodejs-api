@@ -1,4 +1,6 @@
 # Awesome Project Build with TypeORM
+
+### The final project is in branch `es6`
         
 Steps to run this project:
 
